@@ -28,7 +28,7 @@ Package requires **PHP 5.4+** and works with **Laravel 5+**.
 
 ## Usage example
 
-Let's compare this [basic scope](https://github.com/jarektkaczyk/laravel5-global-scope-example/blob/laravel5-global-scope-example/Sofa/Eloquent/Scopes/PublishedScope.php) with the [enhanced scope](https://github.com/jarektkaczyk/laravel-global-scope/blob/laravel-global-scope/examples/PublishedScope.php).
+Let's compare this [basic scope](https://github.com/jarektkaczyk/laravel5-global-scope-example/blob/laravel5-global-scope-example/Sofa/Eloquent/Scopes/PublishedScope.php) with the [enhanced scope](https://github.com/jarektkaczyk/laravel-global-scope/blob/master/examples/PublishedScope.php).
 
 
 ## Roadmap
