@@ -17,15 +17,6 @@ abstract class GlobalScope implements ScopeInterface
     abstract public function apply(Builder $builder, Model $model);
 
     /**
-     * Determine whether where clause is the contraint applied by this scope.
-     *
-     * @param  array  $where Single element from the Query\Builder::$wheres array.
-     * @param  \Illuminate\Database\Eloquent\Model $model
-     * @return boolean
-     */
-    abstract public function isScopeConstraint(array $where, Model $model);
-
-    /**
      * Remove the scope from the given Eloquent query builder.
      *
      * @param  \Illuminate\Database\Eloquent\Builder $builder
@@ -38,10 +29,12 @@ abstract class GlobalScope implements ScopeInterface
 
         $bindingKey = 0;
 
+        $scopeConstraints = $this->getScopeConstraints($model);
+
         foreach ((array) $query->wheres as $key => $where) {
             $bindingsCount = $this->countBindings($where);
 
-            if ($this->isScopeConstraint($where, $model)) {
+            if (in_array($where, $scopeConstraints)) {
                 $this->removeWhere($query, $key);
 
                 $this->removeBindings($query, $bindingKey, $bindingsCount);
@@ -49,6 +42,23 @@ abstract class GlobalScope implements ScopeInterface
                 $bindingKey += $bindingsCount;
             }
         }
+
+        $query->wheres = array_values($query->wheres);
+    }
+
+    /**
+     * Get an array of the constraints applied by the scope.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model $model
+     * @return array
+     */
+    protected function getScopeConstraints(Model $model)
+    {
+        $builder = $model->newQueryWithoutScopes();
+
+        $this->apply($builder, $model);
+
+        return (array) $builder->getQuery()->wheres;
     }
 
     /**
@@ -60,7 +70,7 @@ abstract class GlobalScope implements ScopeInterface
      */
     protected function removeWhere(Query $query, $key)
     {
-        array_splice($query->wheres, $key, 1);
+        unset($query->wheres[$key]);
     }
 
     /**
