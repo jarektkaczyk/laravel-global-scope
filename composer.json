@@ -1,0 +1,43 @@
+{
+    "name": "sofa/laravel-global-scope",
+    "description": "Easy way to define Laravel eloquent global scope.",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/jarektkaczyk/laravel-global-scope/issues",
+        "source": "https://github.com/jarektkaczyk/laravel-global-scope"
+    },
+    "keywords": [
+        "laravel",
+        "eloquent",
+        "database",
+        "global scope"
+    ],
+    "authors": [
+        {
+            "name": "Jarek Tkaczyk",
+            "email": "jarek@softonsofa.com",
+            "homepage": "http://softonsofa.com/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "illuminate/database": "~5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.5.0",
+        "squizlabs/php_codesniffer": "2.3.3",
+        "mockery/mockery": "0.9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sofa\\GlobalScope\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sofa\\GlobalScope\\Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev"
+}
