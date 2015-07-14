@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class PublishedScope extends GlobalScope
 {
-    // This method remains unchanged
+    // This remains unchanged - it's the only method that needs to be implemented
     public function apply(Builder $builder, Model $model)
     {
         $column = $model->getQualifiedPublishedAtColumn();
@@ -20,15 +20,7 @@ class PublishedScope extends GlobalScope
         $this->addWithDrafts($builder);
     }
 
-    // This method is just renamed from isPublishedConstraint
-    public function isScopeConstraint(array $where, Model $model)
-    {
-        $column = $model->getQualifiedPublishedAtColumn();
-
-        return $where['type'] == 'Basic'&& $where['column'] == $column;
-    }
-
-    // Remains unchanged
+    // Remains unchanged - it's just a helper method
     protected function addWithDrafts(Builder $builder)
     {
         $builder->macro('withDrafts', function (Builder $builder) {
