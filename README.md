@@ -1,3 +1,7 @@
+*NOTICE* Since Laravel 5.2 the way global scopes work changes drastically, so it's no longer required and in fact invalid to use this package.
+
+---
+
 # Sofa/Laravel-Global-Scope
 
 Easy way to define Eloquent [Global Scopes](http://softonsofa.com/laravel-5-eloquent-global-scope-how-to) in Laravel 5+.
@@ -13,7 +17,7 @@ That being said, you'll find here short but powerful abstract `GlobalScope` that
 
 ## Installation
 
-Package requires **PHP 5.4+** and works with **Laravel 5+**.
+Package requires **PHP 5.4+** and works with **Laravel 5/5.1**.
 
 1. Require the package in your `composer.json`:
     ```
