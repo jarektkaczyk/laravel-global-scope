@@ -28,6 +28,10 @@ abstract class GlobalScope implements ScopeInterface
     {
         $query = $builder->getQuery();
 
+        if (is_null($query->wheres)) {
+            return;
+        }
+
         $bindingKey = 0;
 
         $scopeConstraints = $this->getScopeConstraints($model);
